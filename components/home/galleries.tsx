@@ -1,10 +1,89 @@
 import { styled } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from '@mui/material/styles';
+import Link  from "next/link"
+import Heading from "../heading";
+import GalleryCard from "../cards/galleryCard";
+
+const CardEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTablet})=>`
+ display:grid;
+
+ 
+grid-template-columns:${(isMobile || isTablet)?"1fr":"repeat(3,1fr)"};
+ grid-gap :30px;
+background:#ffffff;
+width:${(isMobile || isTablet)?"80%":"80%"};
+
+`)
+
+const GalleryContainerEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTablet})=>`
+ display:flex;
+flex-direction:column;
+align-items:center;
+background:#ffffff;
+
+`)
+const SubTitleEl = styled("span")<{}>(({})=>`
+font-size:18px;
+color:#3A3A3A;
+font-weight:200;
+line-height:30px;
+margin-top:20px;
+margin-bottom:20px;
+width:80%;
+`)
 
 
-const HeroEl = styled("section")(()=>``)
-const Hero = ()=>{
+
+const ButtonEl = styled("a")<{}>(({})=>`
+border-radius:20px;
+border:1px solid #1698DA;
+color:#3A3A3A;
+font-weight:400;
+background:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:20px;
+margin-bottom:20px;
+width:200px;
+height:40px;
+cursor:pointer;
+
+`)
+
+
+const GalleryContainer = ()=>{
+    const list = [
+        {title:"Yoga",name:"frank",img:"./images/g1.png",time:"8:00Am - 11:00 Am"},
+        {title:"Karate",name:"john",img:"./images/g2.png",time:"6:00Pm - 8:00 Pm"},
+        {title:"Exercise",name:"jenny",img:"./images/g3.png",time:"3:00Pm - 7:00 Pm"},
+        {title:"Exercise",name:"jenny",img:"./images/g4.png",time:"3:00Pm - 7:00 Pm"},
+        {title:"Exercise",name:"jenny",img:"./images/g5.png",time:"3:00Pm - 7:00 Pm"},
+        {title:"Exercise",name:"jenny",img:"./images/g6.png",time:"3:00Pm - 7:00 Pm"},
+    ];
+
+    const theme = useTheme();
+    
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+    const isLaptop = useMediaQuery(theme.breakpoints.down('lg'));
+    const isDesktop = useMediaQuery(theme.breakpoints.down('xl'));
+
     return (
-        <HeroEl></HeroEl>
+        <GalleryContainerEl isMobile={isMobile} isTablet={isTablet} >
+               <Heading title="Our Gallery" />
+                 <SubTitleEl >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</SubTitleEl>
+ 
+ <CardEl isMobile={isMobile} isTablet={isTablet}>
+ {list.map((item:any,index:number)=>  <GalleryCard  key={index} {...item}/>)}
+              
+      
+ </CardEl>
+           <Link href={"#"}>
+                <ButtonEl href={"#"}>View All Galleries</ButtonEl>
+                </Link>
+        </GalleryContainerEl>
     )
 }
-export default  Hero;
+export default  GalleryContainer;

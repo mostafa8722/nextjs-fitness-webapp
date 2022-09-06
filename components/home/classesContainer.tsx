@@ -12,7 +12,7 @@ const CardEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile
 grid-template-columns:${(isMobile || isTablet)?"1fr":"repeat(3,1fr)"};
  grid-gap :30px;
 background:#F1F1F1;
-width:${(isMobile || isTablet)?"100%":"80%"};
+width:${(isMobile || isTablet)?"80%":"80%"};
 
 `)
 

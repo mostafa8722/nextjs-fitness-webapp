@@ -1,10 +1,86 @@
 import { styled } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from '@mui/material/styles';
+import Link  from "next/link"
+import Heading from "../heading";
+import BlogCard from "../cards/blogCard";
+
+const CardEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTablet})=>`
+ display:grid;
+
+ 
+grid-template-columns:${(isMobile || isTablet)?"1fr":"repeat(3,1fr)"};
+ grid-gap :20px;
+background:#F1F1F1;
+width:${(isMobile || isTablet)?"80%":"80%"};
+
+`)
+
+const BlogContainerEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTablet})=>`
+ display:flex;
+flex-direction:column;
+align-items:center;
+background:#F1F1F1;
+
+`)
+const SubTitleEl = styled("span")<{}>(({})=>`
+font-size:18px;
+color:#3A3A3A;
+font-weight:200;
+line-height:30px;
+margin-top:20px;
+margin-bottom:20px;
+width:80%;
+`)
 
 
-const HeroEl = styled("section")(()=>``)
-const Hero = ()=>{
+
+const ButtonEl = styled("a")<{}>(({})=>`
+border-radius:20px;
+border:1px solid #1698DA;
+color:#3A3A3A;
+font-weight:400;
+background:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:20px;
+margin-bottom:20px;
+width:200px;
+height:40px;
+cursor:pointer;
+
+`)
+
+
+const blogContainer = ()=>{
+    const list = [
+        {title:"Curabitur Ante Justo, Vitae.",name:"frank",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b1.png",time:"24 March, 2022"},
+        {title:"Curabitur Ante Justo, Vitae.",name:"john",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b2.png",time:"24 March, 2022"},
+        {title:"Curabitur Ante Justo, Vitae.",name:"jenny",body:"Lorem Ipsum is simply dummy text of the printing",mg:"./images/t3.png",time:"24 March, 2022"},
+    ];
+
+    const theme = useTheme();
+    
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+    const isLaptop = useMediaQuery(theme.breakpoints.down('lg'));
+    const isDesktop = useMediaQuery(theme.breakpoints.down('xl'));
+
     return (
-        <HeroEl></HeroEl>
+        <BlogContainerEl isMobile={isMobile} isTablet={isTablet} >
+               <Heading title="Our Blog" />
+                 <SubTitleEl >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</SubTitleEl>
+ 
+ <CardEl isMobile={isMobile} isTablet={isTablet}>
+ {list.map((item:any,index:number)=>  <BlogCard  key={index} {...item}/>)}
+              
+      
+ </CardEl>
+           <Link href={"#"}>
+                <ButtonEl href={"#"}>View All blogs</ButtonEl>
+                </Link>
+        </BlogContainerEl>
     )
 }
-export default  Hero;
+export default  blogContainer;

@@ -3,7 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from '@mui/material/styles';
 import Link  from "next/link"
 import Heading from "../heading";
-import ClassCard from "../cards/classCard";
+
 
 
 
@@ -37,7 +37,7 @@ const TableEl = styled("div")<{
   border-top:${borderTop?borderTop:"1px solid #eeeeee"};
  
 
-width:${(isMobile || isTablet)?"100%":"80%"};
+width:${(isMobile || isTablet)?"80%":"80%"};
 
 `)
 const TableTitleEl = styled("span")
