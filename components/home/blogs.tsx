@@ -52,8 +52,7 @@ cursor:pointer;
 
 `)
 
-
-const blogContainer = ()=>{
+const BlogContainer = ()=>{
     const list = [
         {title:"Curabitur Ante Justo, Vitae.",name:"frank",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b1.png",time:"24 March, 2022"},
         {title:"Curabitur Ante Justo, Vitae.",name:"john",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b2.png",time:"24 March, 2022"},
@@ -83,4 +82,4 @@ const blogContainer = ()=>{
         </BlogContainerEl>
     )
 }
-export default  blogContainer;
+export default  BlogContainer;

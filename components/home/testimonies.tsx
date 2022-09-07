@@ -9,7 +9,7 @@ const CardEl = styled("section")<{isMobile:boolean,isTablet:boolean}>(({isMobile
  display:grid;
 
  
-grid-template-columns:${(isMobile || isTablet)?"1fr":"repeat(3,1fr)"};
+grid-template-columns:${(isMobile || isTablet)?"1fr":"repeat(1,1fr)"};
  grid-gap :20px;
 background:#F1F1F1;
 width:${(isMobile || isTablet)?"80%":"80%"};
@@ -53,11 +53,11 @@ cursor:pointer;
 `)
 
 
-const testimoniesContainer = ()=>{
+const TestimoniesContainer = ()=>{
     const list = [
-        {title:"Curabitur Ante Justo, Vitae.",name:"frank",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b1.png",time:"24 March, 2022"},
-        {title:"Curabitur Ante Justo, Vitae.",name:"john",body:"Lorem Ipsum is simply dummy text of the printing",img:"./images/b2.png",time:"24 March, 2022"},
-        {title:"Curabitur Ante Justo, Vitae.",name:"jenny",body:"Lorem Ipsum is simply dummy text of the printing",mg:"./images/t3.png",time:"24 March, 2022"},
+        {name:"frank",body:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",img:"./images/b1.png",time:"24 March, 2022"},
+   
+        
     ];
 
     const theme = useTheme();
@@ -77,10 +77,8 @@ const testimoniesContainer = ()=>{
               
       
  </CardEl>
-           <Link href={"#"}>
-                <ButtonEl href={"#"}>View All testimoniess</ButtonEl>
-                </Link>
+          
         </TestimonyContainerEl>
     )
 }
-export default  testimoniesContainer;
+export default  TestimoniesContainer;

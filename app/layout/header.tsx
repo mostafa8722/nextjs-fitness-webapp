@@ -4,6 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from '@mui/material/styles';
 import Link  from "next/link"
 import {nav} from "../../data/data"
+import {AiOutlineMenu} from "react-icons/ai"
 
 
 const HeaderEl = styled("header")(()=>`
@@ -13,6 +14,7 @@ box-shadow : 0 5px 30px rgb(0 22 84 / 10%);
 position:sticky;
 top:0px;
 z-index:999;
+
 
 `);
 const LogoEl = styled("div")(()=>``);
@@ -32,12 +34,12 @@ display:flex;
 align-items:center;
 flex-direction:${(isMobile||isTablet)?"column":"row"};
 position:${(isMobile||isTablet)?"absolute":"relative"};
-top:${(isMobile||isTablet)?"45px":"0px"};
+top:${(isMobile||isTablet)?"40px":"0px"};
 left:0px;
-background:${(isMobile||isTablet)?"#17a335":"unset"};
+background:${(isMobile||isTablet)?"#ccc":"unset"};
 width:${(isMobile||isTablet)?"100%":"auto"};
 padding:10px;
-
+margin:0px;
 
 `);
 const NavItemEl = styled("li")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTablet})=>`
@@ -55,7 +57,13 @@ const LinkEl = styled("a")<{isMobile:boolean,isTablet:boolean}>(({isMobile,isTab
     color:${isMobile ||  isTablet?'#ffffff':'#17a335'};
   }
 `)
-
+const AiOutlineMenuEl =styled(AiOutlineMenu)(()=>`
+display:flex;
+height:40px;
+color:#454545;
+margin-right:20px;
+cursor:pointer;
+`)
 const Header = ()=>{
     const [navList ,setNavList] = useState(false);
     const theme = useTheme();
@@ -73,9 +81,12 @@ const Header = ()=>{
     },[isTablet,isMobile])
     return (<>
     <HeaderEl>
-     <Stack direction="row">
+     <Stack direction={(isMobile || isTablet)?"row-reverse":"row"} justifyContent="space-between" alignItems="center" >
+     {(isMobile || isTablet)?<AiOutlineMenuEl onClick={()=>setNavList(!navList)} />:<></>}
+     
         <LogoEl></LogoEl>
         <MenuEl></MenuEl>
+    
         {
             !navList && (isMobile || isTablet) ?<></> :
             <NavEl>

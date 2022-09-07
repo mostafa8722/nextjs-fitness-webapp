@@ -3,31 +3,22 @@ import Link from "next/link"
 
 const CardEl = styled("div")(()=>`
 display:flex;
-
-
-
-`);
-
-const ImageEl = styled("img")(()=>`
-height:250px;
-width:130px;
-object-fit:cover;
-
-`);
-const ContentEl = styled("div")(()=>`
-height:210px;
-margin-top:20px;
-margin-bottom:20px;
-display:flex;
+background:#fff;
+height:200px;
+justify-content:center;
+align-items:center;
 flex-direction:column;
-background:#ffffff;
+width:100%;
+position:relative;
 
+margin: 20px;
 `);
+
 
 const TitleEl = styled("h2")(()=>`
-font-size:18px;
+font-size:16px;
 color:#3A3A3A;
-font-weight:700;
+font-weight:500;
 margin: 10px;
 
 `);
@@ -42,36 +33,44 @@ margin-top: ${top};
 
 `);
 
+const CircleEl = styled("span")<{top?:string}>(({top})=>`
+font-size:30px;
+color:#343434;
+font-weight:300;
+margin: 10px;
 
-const ButtonEl = styled("a")<{}>(({})=>`
+position:absolute;
+top:-50px;
+left:-50px;
+height:70px;
+width:70px;
+border-radius:50%;
+display:flex;
+background:#fff;
+font-weight:bold;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+`);
 
 
-color:#3A3A3A;
-font-weight:600;
-margin-top:20px;
-margin-left:20px;
 
 
-cursor:pointer;
-
-`)
-
-const BlogCard =  (props:{title:string,img:string,name:string,time:string,body:string})=>{
-const {title,img,name,time,body} = props;
+const TestomonalCard =  (props:{title:string,img:string,name:string,time:string,body:string})=>{
+const {name,body} = props;
     return (
     <CardEl>
-    <ImageEl src={img} />
-    <ContentEl>
-    <TitleEl >{title}</TitleEl>
-    <SubTitleEl top="1px">{time}</SubTitleEl>
+
+
+
     <SubTitleEl top="1px">{body}</SubTitleEl>
-    <Link href={"#"}>
-                <ButtonEl href={"#"}>Read More</ButtonEl>
-                </Link>
-    </ContentEl>
+    <TitleEl >{name}</TitleEl>
+ 
+    <CircleEl>&#8221;</CircleEl>
+
 
    
     </CardEl>
     );
 }
-export default BlogCard;
+export default TestomonalCard;
